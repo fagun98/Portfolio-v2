@@ -161,8 +161,8 @@ export default function Hero() {
         style={{ top: 'calc(50% + min(31vw, 200px))' }}
       >
         <div ref={foregroundRef} className="hero-foreground">
-          <p className="font-heading text-base font-medium uppercase text-muted">{PERSONAL.title}</p>
-          <p className="mx-auto mt-2 max-w-[480px] text-[15px] leading-6 text-[var(--ink-soft)]">{PERSONAL.tagline}</p>
+          <p className="font-heading text-lg font-bold uppercase text-[#0b2f25] md:text-xl">{PERSONAL.title}</p>
+          <p className="mx-auto mt-2 max-w-[560px] text-base font-semibold leading-7 text-[#17231f] md:text-lg">{PERSONAL.tagline}</p>
           <div className="mt-3 md:mt-2 min-[1360px]:mt-6">
             <KeyboardNav />
           </div>
