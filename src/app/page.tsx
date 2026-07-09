@@ -13,6 +13,7 @@ import Intro from '@/components/Intro'
 import Nav from '@/components/Nav'
 import Projects from '@/components/Projects'
 import ScrollProgress from '@/components/ScrollProgress'
+import ScrollToTopKey from '@/components/ScrollToTopKey'
 import Services from '@/components/Services'
 import { ScrollTrigger } from '@/lib/gsap'
 
@@ -31,6 +32,7 @@ export default function Home() {
     <>
       <AmbientEffects />
       <ScrollProgress />
+      <ScrollToTopKey />
       <Nav />
       <Intro />
       <NeuralSpine />

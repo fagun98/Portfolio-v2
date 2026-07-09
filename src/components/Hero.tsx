@@ -2,17 +2,25 @@
 
 import Image from 'next/image'
 import { ChevronDown } from 'lucide-react'
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react'
 import HeroAmbientPanels from '@/components/HeroAmbientPanels'
 import HeroDepthName from '@/components/HeroDepthName'
 import KeyboardNav from '@/components/KeyboardNav'
 import { PERSONAL, UI_COPY } from '@/lib/data'
 import { gsap } from '@/lib/gsap'
 import { useReducedMotion } from '@/lib/hooks'
+import { cn } from '@/lib/utils'
+
+const HERO_CLICK_IGNORE_SELECTOR =
+  'a, button, [role="button"], input, textarea, select, summary, .hero-foreground, .hero-ambient-panel'
 
 function portraitFallback(title: string) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img" aria-label="${title}"><rect width="800" height="800" fill="white"/><circle cx="400" cy="250" r="118" fill="%231a1a1a" opacity="0.12"/><path d="M205 710c38-178 102-267 195-267s158 89 195 267" fill="%231a1a1a" opacity="0.12"/><path d="M250 690c50-117 100-176 150-176s100 59 150 176" fill="none" stroke="%231a1a1a" stroke-width="8" stroke-linecap="round"/></svg>`
   return `data:image/svg+xml;utf8,${svg}`
+}
+
+function shouldIgnoreHeroClick(target: EventTarget | null) {
+  return target instanceof Element && Boolean(target.closest(HERO_CLICK_IGNORE_SELECTOR))
 }
 
 export default function Hero() {
@@ -23,6 +31,8 @@ export default function Hero() {
   const scrollCueRef = useRef<HTMLDivElement>(null)
   const reducedMotion = useReducedMotion()
   const [portraitSrc, setPortraitSrc] = useState('/assets/face-forward.png')
+  const [coloredPortraitSrc, setColoredPortraitSrc] = useState('/assets/face-forward-colored.png')
+  const [showColoredPortrait, setShowColoredPortrait] = useState(false)
 
   useLayoutEffect(() => {
     if (reducedMotion || !heroRef.current) {
@@ -88,38 +98,72 @@ export default function Hero() {
     return () => ctx.revert()
   }, [reducedMotion])
 
+  const handleHeroClick = (event: ReactMouseEvent<HTMLElement>) => {
+    if (shouldIgnoreHeroClick(event.target)) {
+      return
+    }
+
+    setShowColoredPortrait((showColored) => !showColored)
+  }
+
   return (
-    <section ref={heroRef} id="top" className="relative z-20 h-screen min-h-[760px] w-full overflow-hidden bg-white px-6">
+    <section
+      ref={heroRef}
+      id="top"
+      data-hero-stage={showColoredPortrait ? 1 : 0}
+      onClick={handleHeroClick}
+      className="relative z-20 h-screen min-h-[760px] w-full cursor-pointer overflow-hidden bg-white px-6"
+    >
       <h1 className="sr-only">{PERSONAL.name} - ML Engineer, AI Systems</h1>
 
       <HeroDepthName ref={nameRef} />
 
-      <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
-        <div ref={portraitRef} className="hero-portrait relative aspect-square w-[min(72vw,280px)] md:w-[400px]">
-          <Image
-            src={portraitSrc}
-            alt={UI_COPY.portraitForwardAlt}
-            width={520}
-            height={520}
-            priority
-            loading="eager"
-            fetchPriority="high"
-            unoptimized
-            onError={() => setPortraitSrc(portraitFallback(UI_COPY.fallbackPortraitTitle))}
-            className="h-full w-full object-cover object-[50%_27%] drop-shadow-[0_20px_60px_rgba(0,0,0,0.08)]"
-            sizes="(min-width: 768px) 400px, 72vw"
-          />
+      <div className="pointer-events-none absolute left-1/2 top-[calc(50%_-_min(5vw,20px))] z-10 -translate-x-1/2 -translate-y-1/2 md:top-1/2">
+        <div ref={portraitRef} className="relative">
+          <div className="hero-portrait relative aspect-square w-[min(72vw,280px)] md:w-[400px]">
+            <Image
+              src={portraitSrc}
+              alt={UI_COPY.portraitForwardAlt}
+              width={520}
+              height={520}
+              priority
+              loading="eager"
+              fetchPriority="high"
+              unoptimized
+              onError={() => setPortraitSrc(portraitFallback(UI_COPY.fallbackPortraitTitle))}
+              className={cn(
+                'hero-portrait-image absolute inset-0 h-full w-full object-cover object-[50%_27%] drop-shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-opacity duration-500 ease-out',
+                showColoredPortrait ? 'opacity-0' : 'opacity-100',
+              )}
+              sizes="(min-width: 768px) 400px, 72vw"
+            />
+            <Image
+              src={coloredPortraitSrc}
+              alt={UI_COPY.portraitColoredAlt}
+              width={520}
+              height={520}
+              loading="eager"
+              fetchPriority="low"
+              unoptimized
+              onError={() => setColoredPortraitSrc('/assets/face-forward.png')}
+              className={cn(
+                'hero-portrait-image absolute inset-0 h-full w-full object-cover object-[50%_27%] drop-shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-opacity duration-500 ease-out',
+                showColoredPortrait ? 'opacity-100' : 'opacity-0',
+              )}
+              sizes="(min-width: 768px) 400px, 72vw"
+            />
+          </div>
         </div>
       </div>
 
       <div
-        className="absolute left-1/2 z-20 w-[min(92vw,620px)] -translate-x-1/2 text-center"
+        className="absolute left-1/2 z-20 w-[min(94vw,860px)] -translate-x-1/2 text-center"
         style={{ top: 'calc(50% + min(31vw, 200px))' }}
       >
         <div ref={foregroundRef} className="hero-foreground">
           <p className="font-heading text-base font-medium uppercase text-muted">{PERSONAL.title}</p>
           <p className="mx-auto mt-2 max-w-[480px] text-[15px] leading-6 text-[var(--ink-soft)]">{PERSONAL.tagline}</p>
-          <div className="mt-8">
+          <div className="mt-3 md:mt-2 min-[1360px]:mt-6">
             <KeyboardNav />
           </div>
         </div>

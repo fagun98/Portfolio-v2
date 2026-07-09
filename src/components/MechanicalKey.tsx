@@ -17,7 +17,7 @@ interface MechanicalKeyProps {
   tooltip?: string
   href?: string
   external?: boolean
-  size?: 'md' | 'xl'
+  size?: 'sm' | 'md' | 'lg' | 'xl'
   ariaLabel?: string
   className?: string
 }
@@ -113,7 +113,7 @@ const MechanicalKey = forwardRef<MechanicalKeyHandle, MechanicalKeyProps>(functi
     }
 
     window.scrollTo({
-      top: target.getBoundingClientRect().top + window.scrollY - 80,
+      top: targetSection === 'top' ? 0 : target.getBoundingClientRect().top + window.scrollY - 80,
       behavior: 'smooth',
     })
   }
@@ -171,12 +171,17 @@ const MechanicalKey = forwardRef<MechanicalKeyHandle, MechanicalKeyProps>(functi
           highlight && 'highlight',
           !highlight && accent && `accent-${accent}`,
           pressed && 'pressed',
+          size === 'sm' && 'mech-key-sm',
+          size === 'lg' && 'mech-key-lg',
           size === 'xl' && 'mech-key-xl',
         )}
         onClick={triggerPress}
         onKeyDown={handleKeyDown}
       >
-        <span aria-hidden="true" className={size === 'xl' ? 'text-[34px]' : 'text-[21px]'}>
+        <span
+          aria-hidden="true"
+          className={size === 'xl' ? 'text-[34px]' : size === 'lg' ? 'text-[24px]' : size === 'sm' ? 'text-[18px]' : 'text-[21px]'}
+        >
           {icon}
         </span>
         <span className="mech-key-label">{label}</span>

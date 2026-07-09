@@ -19,14 +19,13 @@ export default function Connect() {
     const ctx = gsap.context(() => {
       gsap.from('.connect-key', {
         y: 32,
-        opacity: 0,
         stagger: 0.12,
         ease: 'power3.out',
         scrollTrigger: {
           id: 'connect-keys',
           trigger: sectionRef.current,
           start: 'top 80%',
-          toggleActions: 'play none none reverse',
+          toggleActions: 'play none none none',
         },
       })
 

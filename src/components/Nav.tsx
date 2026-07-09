@@ -98,18 +98,18 @@ export default function Nav() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={UI_COPY.github}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full text-ink/70 transition-colors hover:bg-amber/10 hover:text-amber"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink/70 transition-colors hover:bg-amber/10 hover:text-amber"
           >
-            <BrandGithubIcon aria-hidden="true" size={18} />
+            <BrandGithubIcon aria-hidden="true" size={24} />
           </a>
           <a
             href={PERSONAL.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={UI_COPY.linkedIn}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full text-ink/70 transition-colors hover:bg-amber/10 hover:text-amber"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink/70 transition-colors hover:bg-amber/10 hover:text-amber"
           >
-            <BrandLinkedInIcon aria-hidden="true" size={18} />
+            <BrandLinkedInIcon aria-hidden="true" size={24} />
           </a>
           <a
             href="#connect"
@@ -122,13 +122,13 @@ export default function Nav() {
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 text-ink md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/10 text-ink md:hidden"
           aria-label={menuOpen ? UI_COPY.menuCloseAria : UI_COPY.menuOpenAria}
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
           onClick={() => setMenuOpen((open) => !open)}
         >
-          {menuOpen ? <X aria-hidden="true" size={20} /> : <Menu aria-hidden="true" size={20} />}
+          {menuOpen ? <X aria-hidden="true" size={24} /> : <Menu aria-hidden="true" size={24} />}
         </button>
       </nav>
 
@@ -157,10 +157,10 @@ export default function Nav() {
           <button
             type="button"
             aria-label={UI_COPY.menuCloseAria}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 text-ink"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/10 text-ink"
             onClick={() => setMenuOpen(false)}
           >
-            <X aria-hidden="true" size={20} />
+            <X aria-hidden="true" size={24} />
           </button>
         </div>
 

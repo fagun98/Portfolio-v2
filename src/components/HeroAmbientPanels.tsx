@@ -304,12 +304,12 @@ export default function HeroAmbientPanels() {
 
   return (
     <div aria-hidden="true" role="presentation" className="pointer-events-none absolute inset-0 z-30 hidden xl:block">
-      <div className="absolute left-[2%] top-1/2 -translate-y-1/2">
+      <div className="pointer-events-auto absolute left-[2%] top-1/2 -translate-y-1/2">
         <div ref={leftRef} className="hero-ambient-panel">
           <CodePanel enabled={enabled} />
         </div>
       </div>
-      <div className="absolute right-[2%] top-1/2 -translate-y-1/2">
+      <div className="pointer-events-auto absolute right-[2%] top-1/2 -translate-y-1/2">
         <div ref={rightRef} className="hero-ambient-panel">
           <ThoughtPanel enabled={enabled} />
         </div>

@@ -57,7 +57,7 @@ export default function KeyboardNav() {
             <MechanicalKey
               key={item.label}
               ref={shortcut ? keyRefs[shortcut] : undefined}
-              icon={<Icon aria-hidden="true" size={item.icon === 'Linkedin' || item.icon === 'Github' ? 24 : 21} />}
+              icon={<Icon aria-hidden="true" size={item.icon === 'Linkedin' || item.icon === 'Github' ? 38 : 34} />}
               label={item.label}
               tooltip={item.tooltip}
               href={'href' in item ? item.href : undefined}
@@ -66,6 +66,8 @@ export default function KeyboardNav() {
               highlight={item.highlight}
               accent={'accent' in item ? item.accent : undefined}
               ariaLabel={item.ariaLabel}
+              size="xl"
+              className="hero-key-wrap"
             />
           )
         })}

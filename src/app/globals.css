@@ -75,6 +75,21 @@ body {
   user-select: none;
 }
 
+.hero-depth-name {
+  transition: opacity 300ms ease;
+}
+
+.hero-name-line {
+  transition:
+    color 300ms ease,
+    opacity 300ms ease;
+}
+
+#top[data-hero-stage='1'] .hero-name-line {
+  color: #0f3d2e;
+  opacity: 0.13;
+}
+
 .mech-key-wrap {
   position: relative;
   display: inline-flex;
@@ -175,6 +190,120 @@ body {
     inset 0 -1px 0 rgba(0, 0, 0, 0.16);
 }
 
+.mech-key-sm {
+  width: 58px;
+  height: 58px;
+  gap: 4px;
+  border-radius: 9px;
+  box-shadow:
+    0 5px 0 #c4bfb3,
+    0 7px 12px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.mech-key-sm.highlight {
+  box-shadow:
+    0 5px 0 #1e3a8a,
+    0 7px 16px rgba(59, 130, 246, 0.32),
+    0 0 18px rgba(59, 130, 246, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.mech-key-sm.accent-amber {
+  box-shadow:
+    0 5px 0 #92400e,
+    0 7px 16px rgba(245, 158, 11, 0.3),
+    0 0 18px rgba(245, 158, 11, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+}
+
+.mech-key-sm.accent-violet {
+  box-shadow:
+    0 5px 0 #4c1d95,
+    0 7px 16px rgba(139, 92, 246, 0.28),
+    0 0 18px rgba(139, 92, 246, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+}
+
+.mech-key-sm.accent-teal {
+  box-shadow:
+    0 5px 0 #134e4a,
+    0 7px 16px rgba(20, 184, 166, 0.26),
+    0 0 18px rgba(20, 184, 166, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+}
+
+.mech-key-sm.accent-rose {
+  box-shadow:
+    0 5px 0 #881337,
+    0 7px 16px rgba(244, 63, 94, 0.26),
+    0 0 18px rgba(244, 63, 94, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+}
+
+.mech-key-lg {
+  width: 82px;
+  height: 82px;
+  gap: 7px;
+  border-radius: 11px;
+  box-shadow:
+    0 7px 0 #c4bfb3,
+    0 10px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.mech-key-lg.highlight {
+  box-shadow:
+    0 7px 0 #1e3a8a,
+    0 10px 24px rgba(59, 130, 246, 0.35),
+    0 0 24px rgba(59, 130, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.mech-key-lg.accent-amber {
+  box-shadow:
+    0 7px 0 #92400e,
+    0 10px 24px rgba(245, 158, 11, 0.32),
+    0 0 22px rgba(245, 158, 11, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+}
+
+.mech-key-lg.accent-violet {
+  box-shadow:
+    0 7px 0 #4c1d95,
+    0 10px 24px rgba(139, 92, 246, 0.3),
+    0 0 22px rgba(139, 92, 246, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+}
+
+.mech-key-lg.accent-teal {
+  box-shadow:
+    0 7px 0 #134e4a,
+    0 10px 24px rgba(20, 184, 166, 0.28),
+    0 0 22px rgba(20, 184, 166, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+}
+
+.mech-key-lg.accent-rose {
+  box-shadow:
+    0 7px 0 #881337,
+    0 10px 24px rgba(244, 63, 94, 0.26),
+    0 0 22px rgba(244, 63, 94, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+}
+
 .mech-key:active,
 .mech-key.pressed {
   transform: translateY(5px);
@@ -251,6 +380,29 @@ body {
     inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
 
+.hero-key-wrap .mech-key-xl {
+  width: 88px;
+  height: 88px;
+}
+
+.hero-key-wrap .mech-key-xl .mech-key-label {
+  font-size: 11px;
+}
+
+@media (min-width: 768px) {
+  .hero-key-wrap .mech-key-xl {
+    width: 112px;
+    height: 112px;
+  }
+}
+
+@media (min-width: 1360px) {
+  .hero-key-wrap .mech-key-xl {
+    width: 120px;
+    height: 120px;
+  }
+}
+
 .mech-key-label {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 9px;
@@ -258,6 +410,14 @@ body {
   letter-spacing: 0;
   opacity: 0.72;
   text-transform: uppercase;
+}
+
+.mech-key-sm .mech-key-label {
+  font-size: 8px;
+}
+
+.mech-key-lg .mech-key-label {
+  font-size: 10px;
 }
 
 .mech-key-xl .mech-key-label {
