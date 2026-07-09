@@ -28,18 +28,23 @@ export default function Projects() {
     }
 
     const ctx = gsap.context(() => {
-      gsap.from('.project-card', {
-        y: 40,
-        opacity: 0,
-        stagger: 0.12,
-        ease: 'power3.out',
-        scrollTrigger: {
-          id: 'project-cards',
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
+      gsap.fromTo(
+        '.project-card',
+        { y: 40, autoAlpha: 0 },
+        {
+          y: 0,
+          autoAlpha: 1,
+          stagger: 0.12,
+          ease: 'power3.out',
+          immediateRender: false,
+          scrollTrigger: {
+            id: 'project-cards',
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
         },
-      })
+      )
     }, sectionRef)
 
     return () => ctx.revert()

@@ -18,6 +18,7 @@ export default function Footer() {
         width={48}
         height={48}
         loading="lazy"
+        fetchPriority="low"
         unoptimized
         className="h-12 w-12 rounded-full border border-ink object-cover"
       />

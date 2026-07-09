@@ -92,6 +92,7 @@ export const KEYBOARD_NAV_ITEMS = [
     targetSection: 'experience',
     keyShortcut: 'e',
     highlight: false,
+    accent: 'amber',
     ariaLabel: 'Navigate to Experience',
   },
   {
@@ -102,6 +103,7 @@ export const KEYBOARD_NAV_ITEMS = [
     targetSection: 'projects',
     keyShortcut: 'p',
     highlight: false,
+    accent: 'violet',
     ariaLabel: 'Navigate to Projects',
   },
   {
@@ -112,6 +114,7 @@ export const KEYBOARD_NAV_ITEMS = [
     targetSection: 'services',
     keyShortcut: 's',
     highlight: false,
+    accent: 'teal',
     ariaLabel: 'Navigate to Services',
   },
   {
@@ -122,6 +125,7 @@ export const KEYBOARD_NAV_ITEMS = [
     targetSection: 'education',
     keyShortcut: 'd',
     highlight: false,
+    accent: 'rose',
     ariaLabel: 'Navigate to Education',
   },
 ] as const

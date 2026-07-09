@@ -9,7 +9,7 @@ import { gsap } from '@/lib/gsap'
 import { cn } from '@/lib/utils'
 
 function RoleCard({ role }: { role: ExperienceItem }) {
-  const [expanded, setExpanded] = useState(false)
+  const [expanded, setExpanded] = useState(true)
   const contentRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
@@ -17,7 +17,8 @@ function RoleCard({ role }: { role: ExperienceItem }) {
       return
     }
 
-    gsap.set(contentRef.current, { height: 0, overflow: 'hidden' })
+    gsap.set(contentRef.current, { height: expanded ? 'auto' : 0, overflow: 'hidden' })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useLayoutEffect(() => {
@@ -110,31 +111,41 @@ export default function Experience() {
     }
 
     const ctx = gsap.context(() => {
-      gsap.from('.timeline-card', {
-        x: -20,
-        opacity: 0,
-        stagger: 0.15,
-        ease: 'power3.out',
-        scrollTrigger: {
-          id: 'experience-cards',
-          trigger: sectionRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
+      gsap.fromTo(
+        '.timeline-card',
+        { x: -20, autoAlpha: 0 },
+        {
+          x: 0,
+          autoAlpha: 1,
+          stagger: 0.15,
+          ease: 'power3.out',
+          immediateRender: false,
+          scrollTrigger: {
+            id: 'experience-cards',
+            trigger: sectionRef.current,
+            start: 'top 75%',
+            toggleActions: 'play none none reverse',
+          },
         },
-      })
+      )
 
-      gsap.from('.timeline-node', {
-        scale: 0,
-        stagger: 0.15,
-        delay: 0.15,
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-          id: 'experience-nodes',
-          trigger: sectionRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
+      gsap.fromTo(
+        '.timeline-node',
+        { scale: 0 },
+        {
+          scale: 1,
+          stagger: 0.15,
+          delay: 0.15,
+          ease: 'back.out(1.7)',
+          immediateRender: false,
+          scrollTrigger: {
+            id: 'experience-nodes',
+            trigger: sectionRef.current,
+            start: 'top 75%',
+            toggleActions: 'play none none reverse',
+          },
         },
-      })
+      )
     }, sectionRef)
 
     return () => ctx.revert()

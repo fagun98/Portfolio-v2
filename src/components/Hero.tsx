@@ -103,6 +103,7 @@ export default function Hero() {
             height={520}
             priority
             loading="eager"
+            fetchPriority="high"
             unoptimized
             onError={() => setPortraitSrc(portraitFallback(UI_COPY.fallbackPortraitTitle))}
             className="h-full w-full object-cover object-[50%_27%] drop-shadow-[0_20px_60px_rgba(0,0,0,0.08)]"

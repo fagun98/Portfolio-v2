@@ -13,6 +13,7 @@ interface MechanicalKeyProps {
   targetSection?: string
   keyShortcut?: string
   highlight?: boolean
+  accent?: 'amber' | 'violet' | 'teal' | 'rose'
   tooltip?: string
   href?: string
   external?: boolean
@@ -64,6 +65,7 @@ const MechanicalKey = forwardRef<MechanicalKeyHandle, MechanicalKeyProps>(functi
     label,
     targetSection,
     highlight = false,
+    accent,
     tooltip,
     href,
     external = true,
@@ -164,7 +166,13 @@ const MechanicalKey = forwardRef<MechanicalKeyHandle, MechanicalKeyProps>(functi
         role="button"
         tabIndex={0}
         aria-label={ariaLabel ?? (href ? `Open ${tooltip ?? label}` : `Navigate to ${tooltip ?? label}`)}
-        className={cn('mech-key', highlight && 'highlight', pressed && 'pressed', size === 'xl' && 'mech-key-xl')}
+        className={cn(
+          'mech-key',
+          highlight && 'highlight',
+          !highlight && accent && `accent-${accent}`,
+          pressed && 'pressed',
+          size === 'xl' && 'mech-key-xl',
+        )}
         onClick={triggerPress}
         onKeyDown={handleKeyDown}
       >

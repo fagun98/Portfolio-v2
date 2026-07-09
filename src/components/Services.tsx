@@ -36,18 +36,23 @@ export default function Services() {
     }
 
     const ctx = gsap.context(() => {
-      gsap.from('.service-card', {
-        y: 30,
-        opacity: 0,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          id: 'service-cards',
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
+      gsap.fromTo(
+        '.service-card',
+        { y: 30, autoAlpha: 0 },
+        {
+          y: 0,
+          autoAlpha: 1,
+          stagger: 0.1,
+          ease: 'power3.out',
+          immediateRender: false,
+          scrollTrigger: {
+            id: 'service-cards',
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
         },
-      })
+      )
     }, sectionRef)
 
     return () => ctx.revert()

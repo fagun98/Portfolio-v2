@@ -64,6 +64,7 @@ export default function KeyboardNav() {
               targetSection={'targetSection' in item ? item.targetSection : undefined}
               keyShortcut={shortcut}
               highlight={item.highlight}
+              accent={'accent' in item ? item.accent : undefined}
               ariaLabel={item.ariaLabel}
             />
           )
