@@ -176,8 +176,8 @@ export const HERO_AMBIENT = {
 
 export const MARGIN_WIDGETS = {
   experience: {
-    label: 'accuracy',
-    value: '60% -> 85%',
+    label: 'accuracy increase',
+    value: '+25%',
     delta: '+25pp',
   },
   projects: ['$ git push origin main', 'smartpal-v2 deployed', 'latency: 4.2s down', 'build passing'],
@@ -185,8 +185,8 @@ export const MARGIN_WIDGETS = {
 } as const
 
 export const METRICS = [
-  { value: '60% -> 85%', label: 'Answer accuracy', highlight: true },
-  { value: '9s -> <5s', label: 'Response latency', highlight: true },
+  { value: '+25%', label: 'Answer accuracy increase', highlight: true },
+  { value: '-50%', label: 'Response latency reduction', highlight: true },
   { value: '-40%', label: 'Token usage' },
   { value: '-70%', label: 'Non-prod infrastructure cost' },
 ]
