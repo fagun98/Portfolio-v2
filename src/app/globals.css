@@ -405,25 +405,92 @@ body {
 }
 
 .hero-key-wrap .mech-key-xl {
-  width: 88px;
-  height: 88px;
+  width: 42px;
+  height: 42px;
+  gap: 2px;
+  border-radius: 7px;
+  box-shadow:
+    0 4px 0 #c4bfb3,
+    0 6px 10px rgba(0, 0, 0, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.08);
 }
 
 .hero-key-wrap .mech-key-xl .mech-key-label {
-  font-size: 11px;
+  font-size: 7px;
+}
+
+.hero-key-wrap .mech-key-xl svg {
+  width: 17px;
+  height: 17px;
+}
+
+.keyboard-key-row {
+  gap: clamp(4px, 1.2vw, 10px);
+}
+
+@media (min-width: 480px) {
+  .hero-key-wrap .mech-key-xl {
+    width: 58px;
+    height: 58px;
+    gap: 4px;
+    border-radius: 8px;
+  }
+
+  .hero-key-wrap .mech-key-xl .mech-key-label {
+    font-size: 8px;
+  }
+
+  .hero-key-wrap .mech-key-xl svg {
+    width: 21px;
+    height: 21px;
+  }
 }
 
 @media (min-width: 768px) {
   .hero-key-wrap .mech-key-xl {
-    width: 112px;
-    height: 112px;
+    width: 78px;
+    height: 78px;
+    gap: 6px;
+    border-radius: 10px;
+  }
+
+  .hero-key-wrap .mech-key-xl .mech-key-label {
+    font-size: 9px;
+  }
+
+  .hero-key-wrap .mech-key-xl svg {
+    width: 27px;
+    height: 27px;
   }
 }
 
-@media (min-width: 1360px) {
+@media (min-width: 1024px) {
   .hero-key-wrap .mech-key-xl {
-    width: 120px;
-    height: 120px;
+    width: 96px;
+    height: 96px;
+    gap: 7px;
+  }
+
+  .hero-key-wrap .mech-key-xl .mech-key-label {
+    font-size: 10px;
+  }
+
+  .hero-key-wrap .mech-key-xl svg {
+    width: 31px;
+    height: 31px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .hero-key-wrap .mech-key-xl {
+    width: 104px;
+    height: 104px;
+  }
+
+  .hero-key-wrap .mech-key-xl svg {
+    width: 34px;
+    height: 34px;
   }
 }
 

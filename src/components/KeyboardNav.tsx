@@ -49,7 +49,7 @@ export default function KeyboardNav() {
 
   return (
     <div role="navigation" aria-label="Quick navigation" className="relative flex flex-col items-center">
-      <div className="flex flex-wrap items-center justify-center gap-[10px]">
+      <div className="keyboard-key-row flex w-full flex-nowrap items-center justify-center">
         {KEYBOARD_NAV_ITEMS.map((item) => {
           const Icon = iconMap[item.icon]
           const shortcut = 'keyShortcut' in item ? item.keyShortcut : undefined
@@ -58,7 +58,7 @@ export default function KeyboardNav() {
             <MechanicalKey
               key={item.label}
               ref={shortcut ? keyRefs[shortcut] : undefined}
-              icon={<Icon aria-hidden="true" size={item.icon === 'Linkedin' || item.icon === 'Github' ? 38 : 34} />}
+              icon={<Icon aria-hidden="true" />}
               label={item.label}
               tooltip={item.tooltip}
               href={'href' in item ? item.href : undefined}
