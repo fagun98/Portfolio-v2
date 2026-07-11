@@ -700,6 +700,244 @@ body {
   box-shadow: 0 0 0 1px rgba(239, 159, 39, 0.1), 0 20px 80px rgba(239, 159, 39, 0.12);
 }
 
+.journey-rail {
+  position: fixed;
+  inset-block: 4.5rem 1rem;
+  right: 0.75rem;
+  z-index: 35;
+  width: 8.5rem;
+  pointer-events: none;
+}
+
+.journey-rail-title {
+  position: absolute;
+  right: 0.55rem;
+  top: 0.25rem;
+  writing-mode: vertical-rl;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.34);
+}
+
+.journey-rail-track {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.journey-rail-track path {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.journey-track-shadow {
+  stroke: rgba(26, 26, 26, 0.08);
+  stroke-width: 16;
+  filter: blur(5px);
+}
+
+.journey-track-bed {
+  stroke: #1f2523;
+  stroke-width: 9;
+}
+
+.journey-track-ties {
+  stroke: #f4f2eb;
+  stroke-width: 4;
+  stroke-dasharray: 2 11;
+}
+
+.journey-track-progress {
+  stroke: var(--amber);
+  stroke-width: 3;
+  transition: stroke-dasharray 120ms linear;
+}
+
+.journey-station {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 0 1px rgba(26, 26, 26, 0.28), 0 4px 12px rgba(26, 26, 26, 0.14);
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.journey-station:hover,
+.journey-station:focus-visible,
+.journey-station-active {
+  z-index: 3;
+  transform: translate(-50%, -50%) scale(1.16);
+  box-shadow: 0 0 0 2px var(--amber), 0 5px 16px rgba(239, 159, 39, 0.28);
+  outline: none;
+}
+
+.journey-station-dot {
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: #1f2523;
+}
+
+.journey-station-active .journey-station-dot {
+  background: var(--amber);
+}
+
+.journey-station-label {
+  position: absolute;
+  right: calc(100% + 9px);
+  top: 50%;
+  min-width: max-content;
+  transform: translate(5px, -50%);
+  border: 1px solid rgba(26, 26, 26, 0.1);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 4px 7px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--ink);
+  opacity: 0;
+  box-shadow: 0 6px 18px rgba(26, 26, 26, 0.1);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.journey-station:hover .journey-station-label,
+.journey-station:focus-visible .journey-station-label,
+.journey-station-active .journey-station-label {
+  transform: translate(0, -50%);
+  opacity: 1;
+}
+
+.journey-train {
+  position: absolute;
+  z-index: 5;
+  width: 68px;
+  height: 68px;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 9px 9px rgba(26, 26, 26, 0.28));
+  transition: left 120ms linear, top 120ms linear;
+}
+
+.journey-locomotive-image {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: journey-engine-rumble 700ms ease-in-out infinite alternate;
+}
+
+.journey-train-smoke {
+  position: absolute;
+  z-index: 1;
+  left: 25px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.92), rgba(118, 126, 122, 0.54) 55%, rgba(54, 62, 58, 0.08) 76%);
+  filter: blur(0.4px);
+  opacity: 0;
+  animation: journey-smoke 2.4s ease-out infinite;
+}
+
+.journey-smoke-two {
+  animation-delay: -0.6s;
+}
+
+.journey-smoke-three {
+  animation-delay: -1.2s;
+}
+
+.journey-smoke-four {
+  animation-delay: -1.8s;
+}
+
+.journey-progress-label {
+  position: absolute;
+  bottom: 0;
+  right: 0.35rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 8px;
+  font-weight: 700;
+  color: rgba(26, 26, 26, 0.45);
+}
+
+@keyframes journey-smoke {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.35); }
+  18% { opacity: 0.7; }
+  58% { opacity: 0.38; }
+  100% { opacity: 0; transform: translate(-15px, -28px) scale(2.35); }
+}
+
+@keyframes journey-engine-rumble {
+  from { transform: translateY(-0.6px) rotate(-0.35deg); }
+  to { transform: translateY(0.8px) rotate(0.35deg); }
+}
+
+@media (min-width: 1600px) {
+  .journey-rail {
+    right: max(1.5rem, calc((100vw - 1500px) / 2));
+    width: 9.5rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .journey-rail {
+    right: 0.15rem;
+    width: 4.5rem;
+    opacity: 0.86;
+  }
+
+  .journey-rail-title,
+  .journey-progress-label,
+  .journey-station-label {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .journey-rail {
+    inset-block: 4.25rem 0.75rem;
+    right: -0.35rem;
+    width: 2.85rem;
+    opacity: 0.72;
+  }
+
+  .journey-station {
+    width: 12px;
+    height: 12px;
+  }
+
+  .journey-station-dot {
+    inset: 4px;
+  }
+
+  .journey-train {
+    width: 48px;
+    height: 48px;
+  }
+
+  .journey-train-smoke {
+    left: 17px;
+    top: 3px;
+    width: 7px;
+    height: 7px;
+  }
+}
+
 .skills-section {
   background: linear-gradient(180deg, var(--background), rgba(29, 158, 117, 0.035) 48%, var(--background));
 }

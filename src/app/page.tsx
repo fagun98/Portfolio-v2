@@ -12,7 +12,6 @@ import Hero from '@/components/Hero'
 import Intro from '@/components/Intro'
 import Nav from '@/components/Nav'
 import Projects from '@/components/Projects'
-import ScrollProgress from '@/components/ScrollProgress'
 import ScrollToTopKey from '@/components/ScrollToTopKey'
 import Services from '@/components/Services'
 import Skills from '@/components/Skills'
@@ -32,7 +31,6 @@ export default function Home() {
   return (
     <>
       <AmbientEffects />
-      <ScrollProgress />
       <ScrollToTopKey />
       <Nav />
       <Intro />
