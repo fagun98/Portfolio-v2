@@ -15,6 +15,7 @@ import Projects from '@/components/Projects'
 import ScrollProgress from '@/components/ScrollProgress'
 import ScrollToTopKey from '@/components/ScrollToTopKey'
 import Services from '@/components/Services'
+import Skills from '@/components/Skills'
 import { ScrollTrigger } from '@/lib/gsap'
 
 const NeuralSpine = dynamic(() => import('@/components/NeuralSpine'), {
@@ -41,6 +42,7 @@ export default function Home() {
         <About />
         <Experience />
         <Projects />
+        <Skills />
         <Services />
         <Education />
         <Connect />

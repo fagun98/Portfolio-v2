@@ -1,6 +1,6 @@
 'use client'
 
-import { Briefcase, Cpu, FolderOpen, GraduationCap } from 'lucide-react'
+import { Briefcase, Cpu, FolderOpen, GraduationCap, Sparkles } from 'lucide-react'
 import { createRef, useEffect, useMemo, type RefObject } from 'react'
 import { BrandGithubIcon, BrandLinkedInIcon } from '@/components/BrandIcons'
 import MechanicalKey, { MechanicalKeyHandle } from '@/components/MechanicalKey'
@@ -13,6 +13,7 @@ const iconMap = {
   FolderOpen,
   Cpu,
   GraduationCap,
+  Sparkles,
 }
 
 export default function KeyboardNav() {

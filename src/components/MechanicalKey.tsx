@@ -13,7 +13,7 @@ interface MechanicalKeyProps {
   targetSection?: string
   keyShortcut?: string
   highlight?: boolean
-  accent?: 'amber' | 'violet' | 'teal' | 'rose'
+  accent?: 'amber' | 'violet' | 'teal' | 'rose' | 'cyan'
   tooltip?: string
   href?: string
   external?: boolean

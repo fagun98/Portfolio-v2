@@ -20,21 +20,23 @@ export const SITE_META = {
   twitterDescription: 'ML Engineer building RAG pipelines, multi-agent systems, and production AI infrastructure.',
 }
 
-export const SECTION_IDS = ['about', 'experience', 'projects', 'services', 'education', 'connect'] as const
+export const SECTION_IDS = ['about', 'experience', 'projects', 'skills', 'services', 'education', 'connect'] as const
 
 export const SECTION_LABELS: Record<(typeof SECTION_IDS)[number], string> = {
   about: '01 - About',
   experience: '02 - Experience',
   projects: '03 - Projects',
-  services: '04 - Services',
-  education: '05 - Education',
-  connect: '06 - Connect',
+  skills: '04 - Skills',
+  services: '05 - Services',
+  education: '06 - Education',
+  connect: '07 - Connect',
 }
 
 export const NAV_ITEMS = [
   { id: 'about', label: 'About', ariaLabel: 'Scroll to About section' },
   { id: 'experience', label: 'Experience', ariaLabel: 'Scroll to Experience section' },
   { id: 'projects', label: 'Projects', ariaLabel: 'Scroll to Projects section' },
+  { id: 'skills', label: 'Skills', ariaLabel: 'Scroll to Skills section' },
   { id: 'services', label: 'Services', ariaLabel: 'Scroll to Services section' },
   { id: 'education', label: 'Education', ariaLabel: 'Scroll to Education section' },
   { id: 'connect', label: 'Connect', ariaLabel: 'Scroll to Connect section' },
@@ -96,6 +98,17 @@ export const KEYBOARD_NAV_ITEMS = [
     highlight: false,
     accent: 'amber',
     ariaLabel: 'Navigate to Experience',
+  },
+  {
+    type: 'section',
+    label: 'Sk',
+    tooltip: 'Skills',
+    icon: 'Sparkles',
+    targetSection: 'skills',
+    keyShortcut: 'k',
+    highlight: false,
+    accent: 'cyan',
+    ariaLabel: 'Navigate to Skills',
   },
   {
     type: 'section',
