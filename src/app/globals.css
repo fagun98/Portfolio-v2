@@ -39,6 +39,50 @@ body {
   overflow-x: hidden;
 }
 
+.intro-overlay {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(104, 76, 45, 0.5), transparent 72%),
+    #0b0907;
+  isolation: isolate;
+}
+
+.intro-media,
+.intro-video {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.intro-video {
+  object-position: center center;
+}
+
+.intro-video-backdrop {
+  display: none;
+}
+
+@media (max-width: 767px) and (orientation: portrait) {
+  .intro-video {
+    object-fit: contain;
+    object-position: 50% 50%;
+  }
+
+  .intro-video-backdrop {
+    display: block;
+    filter: blur(28px) brightness(0.55) saturate(0.9);
+    opacity: 0.82;
+    transform: scale(1.16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-overlay {
+    display: none;
+  }
+}
+
 ::selection {
   background: rgba(239, 159, 39, 0.2);
 }
